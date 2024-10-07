@@ -1,32 +1,32 @@
 #include <stdio.h>
 #include <math.h>
-
+//Convert C to F
 float celsius_to_fahrenheit(float celsius) {
     return (celsius * 9.0 / 5.0) + 32.0;
 }
-
+//Convert F to C
 float fahrenheit_to_celsius(float fahrenheit) {
     return (fahrenheit - 32) * 5.0 / 9.0;
 }
-
+//Convert C to K
 float celsius_to_kelvin(float celsius) {
     return (celsius + 273.15);
 }
-
+//Convert K to C
 float kelvin_to_celsius(float kelvin) {
     return (kelvin - 273.15);
 }
-
+// Convert F to K
 float fahrenheit_to_kelvin(float fahrenheit) {
     float celsius = fahrenheit_to_celsius(fahrenheit);
     return celsius_to_kelvin(celsius);
 }
-
+//Convert K to F
 float kelvin_to_fahrenheit(float kelvin) {
     float celsius = kelvin_to_celsius(kelvin);
     return celsius_to_fahrenheit(celsius);
 }
-
+//Categotize celsius temp and print appropriate text 
 void categorize_temperature(float celsius) {
     if (celsius < 0.0) {
         printf("Temperature category: Freezing\n");
@@ -47,9 +47,10 @@ void categorize_temperature(float celsius) {
 }
 
 int main() {
+//Initialize variables
     float value, new_temp, c;
     int scale, target;
-
+//Recieve input from user and assign variables
     printf("Enter the temperature: ");
     scanf("%f", &value);
 
@@ -58,7 +59,7 @@ int main() {
 
     printf("Convert to (1) Celsius, (2) Fahrenheit, (3) Kelvin: ");
     scanf("%d", &target);
-
+//Convert temperature and define c as temperature in celsius
     if (scale == 1 && target == 2) {
         new_temp = celsius_to_fahrenheit(value);
         c = value;
@@ -81,7 +82,7 @@ int main() {
         printf("Invalid conversion choice\n");
         return 0;
     }
-
+//Print converted temperature and run categorize_temperature to print category and statement
     printf("Converted temperature: %f\n", new_temp);
     categorize_temperature(c);
 
